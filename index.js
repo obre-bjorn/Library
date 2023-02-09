@@ -19,14 +19,14 @@ function displayBooks(library) {
     let bookContainer = document.querySelector('#bookContainer');
 
     library.map((book) => {
-        let bookSec = document.createElement('div');
-        for (const key in book) {
-            let p = document.createElement('p');
-            p.textContent = book[key]
-            bookSec.appendChild(p)
-        }
-
-        bookContainer.appendChild(bookSec)
+        bookContainer.innerHTML += `
+            <div class="bookCard w-96  bg-green-400 rounded-xl p-10 text-center shadow-xl">
+                <p class="bookTitle text-xl font-bold">${book.title}</p>
+                <p class="author text-md font-light">By: ${book.author}</p>
+                <p class="page">Pages: ${book.pages}</p>
+                <p class="read">Read: ${book.read}</p>
+            </div>
+        `
     })
     console.log(bookContainer);
 
@@ -38,4 +38,4 @@ const Book3 = new Book('Rich Dad Poor Dad', 'Rick Kwoloski', 250);
 addBookToLibrary(Book1)
 addBookToLibrary(Book2)
 addBookToLibrary(Book3)
-    // displayBooks(myLibrary)
+displayBooks(myLibrary)
