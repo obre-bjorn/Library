@@ -1,4 +1,5 @@
 let myLibrary = []
+let deleteBooksBtn = [...document.querySelectorAll('.deleteBook')];
 
 function Book(title, author, pages, cover = "", read = false) {
     //constructor
@@ -31,7 +32,15 @@ function displayBooks(library) {
     console.log(bookContainer);
 
 }
+deleteBooksBtn.forEach((btn) => {
+    btn.addEventListener('click', function(e) {
+        let bookContainer = document.
+        console.log(this.parentNode)
+        console.log(e.target.parentNode)
+    })
+})
 
+console.log(deleteBook)
 const Book1 = new Book('Way of Men', 'Andrew Kibe', 350, true);
 const Book2 = new Book('This is Africa', 'Abel Mutua', 280);
 const Book3 = new Book('Rich Dad Poor Dad', 'Rick Kwoloski', 250);
