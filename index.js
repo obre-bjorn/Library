@@ -1,5 +1,8 @@
 let myLibrary = []
 let deleteBooksBtn = [...document.querySelectorAll('.deleteBook')];
+let addBookBtn = document.querySelector('.addBook');
+let modal = document.querySelector('.modal');
+
 
 function Book(title, author, pages, cover = "", read = false) {
     //constructor
@@ -13,14 +16,48 @@ function Book(title, author, pages, cover = "", read = false) {
 
 function addBookToLibrary(book) {
     myLibrary.push(book)
+
 }
+
+let addBookForm = document.querySelector('#addBookForm');
+
+
+addBookForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+    const formProps = Object.fromEntries(formData);
+    console.log(formProps)
+
+})
+
+//  SHOW MODAL
+
+addBookBtn.addEventListener('click', () => {
+    modal.classList.add('flex')
+    modal.classList.remove('hidden');
+})
+
+// MODAL  FUNCTIONALITY
+let formContainer = document.querySelector('.addbookFormContainer')
+
+formContainer.addEventListener('click', (e) => {
+    e.stopPropagation()
+})
+
+modal.addEventListener('click', (e) => {
+
+    modal.classList.remove('flex');
+    modal.classList.add('hidden')
+
+})
 
 
 function displayBooks(library) {
     let bookContainer = document.querySelector('#bookContainer');
 
     library.map((book, index) => {
-        bookContainer.innerHTML += `
+            bookContainer.innerHTML += `
            <div class="bookCard w-96  bg-green-400 rounded-xl p-10 text-center shadow-xl flex flex-col items-center gap-5 ">
                 <button class=" deleteBook bg-red-700 text-white px-2 py-0.5 self-end rounded-md hover:bg-red-500 border-none">X</button>
                 <p class="bookTitle text-xl font-bold">Rich Dad Poor Dad</p>
@@ -30,8 +67,8 @@ function displayBooks(library) {
                 <p class="read">Read: True</p>
             </div>
         `
-    })
-    console.log(bookContainer);
+        })
+        // console.log(bookContainer);
 
 }
 // deleteBooksBtn.forEach((btn) => {
@@ -42,7 +79,7 @@ function displayBooks(library) {
 //     })
 // })
 
-console.log(deleteBooksBtn)
+// console.log(deleteBooksBtn);
 const Book1 = new Book('Way of Men', 'Andrew Kibe', 350, true);
 const Book2 = new Book('This is Africa', 'Abel Mutua', 280);
 const Book3 = new Book('Rich Dad Poor Dad', 'Rick Kwoloski', 250);
