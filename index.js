@@ -19,28 +19,30 @@ function addBookToLibrary(book) {
 function displayBooks(library) {
     let bookContainer = document.querySelector('#bookContainer');
 
-    library.map((book) => {
+    library.map((book, index) => {
         bookContainer.innerHTML += `
-            <div class="bookCard w-96  bg-green-400 rounded-xl p-10 text-center shadow-xl">
-                <p class="bookTitle text-xl font-bold">${book.title}</p>
-                <p class="author text-md font-light">By: ${book.author}</p>
-                <p class="page">Pages: ${book.pages}</p>
-                <p class="read">Read: ${book.read}</p>
+           <div class="bookCard w-96  bg-green-400 rounded-xl p-10 text-center shadow-xl flex flex-col items-center gap-5 ">
+                <button class=" deleteBook bg-red-700 text-white px-2 py-0.5 self-end rounded-md hover:bg-red-500 border-none">X</button>
+                <p class="bookTitle text-xl font-bold">Rich Dad Poor Dad</p>
+                <img class="mx-auto mt-5 w-1/2 " src="https://afrireadsbooks.com/wp-content/uploads/2021/05/61M1eEsuSML.jpg" alt="Way of maen">
+                <p class="author text-md font-light">By: Jack Donovan</p>
+                <p class="page">Pages: 250</p>
+                <p class="read">Read: True</p>
             </div>
         `
     })
     console.log(bookContainer);
 
 }
-deleteBooksBtn.forEach((btn) => {
-    btn.addEventListener('click', function(e) {
-        let bookContainer = document.
-        console.log(this.parentNode)
-        console.log(e.target.parentNode)
-    })
-})
+// deleteBooksBtn.forEach((btn) => {
+//     btn.addEventListener('click', function(e) {
+//         let bookContainer = document.
+//         console.log(this.parentNode)
+//         console.log(e.target.parentNode)
+//     })
+// })
 
-console.log(deleteBook)
+console.log(deleteBooksBtn)
 const Book1 = new Book('Way of Men', 'Andrew Kibe', 350, true);
 const Book2 = new Book('This is Africa', 'Abel Mutua', 280);
 const Book3 = new Book('Rich Dad Poor Dad', 'Rick Kwoloski', 250);
