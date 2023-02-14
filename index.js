@@ -27,7 +27,16 @@ addBookForm.addEventListener('submit', (e) => {
 
     const formData = new FormData(e.target);
     const formProps = Object.fromEntries(formData);
-    console.log(formProps)
+
+    const book = new Book(formProps['book-title'], formProps['book-author'], formProps['book-pages'], formProps['book-cover']);
+
+
+    myLibrary.push(book);
+
+
+    console.log(book)
+
+
 
 })
 
