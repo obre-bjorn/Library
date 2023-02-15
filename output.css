@@ -770,6 +770,14 @@ video {
   box-shadow: none;
 }
 
+.fade {
+  transition: opacity 0.15s linear;
+}
+
+.fade:not(.show) {
+  opacity: 0;
+}
+
 .modal {
   z-index: 1055;
 }
@@ -791,8 +799,20 @@ video {
   transform: scale(1.02);
 }
 
+.modal-backdrop.fade {
+  opacity: 0;
+}
+
+.offcanvas-backdrop.fade {
+  opacity: 0;
+}
+
 .btn .ripple-wave {
   background-image: radial-gradient(circle, hsla(0deg, 0%, 100%, 0.2) 0, hsla(0deg, 0%, 100%, 0.3) 40%, hsla(0deg, 0%, 100%, 0.4) 50%, hsla(0deg, 0%, 100%, 0.5) 60%, hsla(0deg, 0%, 100%, 0) 70%);
+}
+
+.timepicker-modal .fade.show {
+  opacity: 1;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1331,6 +1351,14 @@ video {
   left: 0px;
 }
 
+.top-0 {
+  top: 0px;
+}
+
+.left-0 {
+  left: 0px;
+}
+
 .my-4 {
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -1357,8 +1385,8 @@ video {
   display: none;
 }
 
-.w-3\/12 {
-  width: 25%;
+.h-full {
+  height: 100%;
 }
 
 .w-full {
@@ -1371,6 +1399,15 @@ video {
 
 .w-1\/2 {
   width: 50%;
+}
+
+.w-fit {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.min-w-full {
+  min-width: 100%;
 }
 
 .cursor-pointer {
@@ -1407,6 +1444,10 @@ video {
 
 .self-end {
   align-self: flex-end;
+}
+
+.overflow-hidden {
+  overflow: hidden;
 }
 
 .scroll-smooth {
