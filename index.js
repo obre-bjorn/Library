@@ -14,11 +14,8 @@ function Book(title, author, pages, cover = "", read = false) {
 
 }
 
-function addBookToLibrary(book) {
-    myLibrary.push(book)
 
-}
-
+//  ADD BOOK BUTTON
 let addBookForm = document.querySelector('#addBookForm');
 
 
@@ -29,14 +26,17 @@ addBookForm.addEventListener('submit', (e) => {
     const formProps = Object.fromEntries(formData);
 
     const book = new Book(formProps['book-title'], formProps['book-author'], formProps['book-pages'], formProps['book-cover']);
-
-
     myLibrary.push(book);
 
 
-    console.log(book)
+    let libraryIndex = myLibrary.length - 1
 
+    AddBook(book);
+    console.log(libraryIndex)
 
+    addBookForm.reset();
+    modal.classList.remove('flex');
+    modal.classList.add('hidden')
 
 })
 
@@ -62,21 +62,25 @@ modal.addEventListener('click', (e) => {
 })
 
 
-function displayBooks(library) {
+
+// ADD BOOK TO DOM
+function AddBook(book, index) {
     let bookContainer = document.querySelector('#bookContainer');
 
-    library.map((book, index) => {
-            bookContainer.innerHTML += `
-           <div class="bookCard w-96  bg-green-400 rounded-xl p-10 text-center shadow-xl flex flex-col items-center gap-5 ">
-                <button class=" deleteBook bg-red-700 text-white px-2 py-0.5 self-end rounded-md hover:bg-red-500 border-none">X</button>
-                <p class="bookTitle text-xl font-bold">Rich Dad Poor Dad</p>
-                <img class="mx-auto mt-5 w-1/2 " src="https://afrireadsbooks.com/wp-content/uploads/2021/05/61M1eEsuSML.jpg" alt="Way of maen">
-                <p class="author text-md font-light">By: Jack Donovan</p>
-                <p class="page">Pages: 250</p>
-                <p class="read">Read: True</p>
+
+    bookContainer.innerHTML += `
+           <div id="${index}" class="bookCard w-96 bg-green-300 rounded-xl p-10 text-center shadow-xl flex flex-col items-center gap-5 transition-all hover:scale-105">
+                <button class=" deleteBook bg-red-700 text-white px-2 py-0.5 self-end rounded-2xl hover:bg-red-600 border-none shadow-3xl hover:scale-125  transition-all delay-150">X</button>
+                <img class="mx-auto mt-2 w-1/2  rounded-xl hover:rounded-none transition-all delay-200 " src="${book.cover}"
+                    alt="${book.title}">
+                <p class="bookTitle text-2xl font-extrabold text-purple-800">${book.title}</p>
+                <p class="author text-md font-light ">By: ${book.author}</p>
+                <p class="page ">Pages: ${book.pages}</p>
+                <p class="read ">Read: ${book.read}</p>
             </div>
         `
-        })
+
+    console.log(book)
         // console.log(bookContainer);
 
 }
@@ -92,7 +96,7 @@ function displayBooks(library) {
 const Book1 = new Book('Way of Men', 'Andrew Kibe', 350, true);
 const Book2 = new Book('This is Africa', 'Abel Mutua', 280);
 const Book3 = new Book('Rich Dad Poor Dad', 'Rick Kwoloski', 250);
-addBookToLibrary(Book1)
-addBookToLibrary(Book2)
-addBookToLibrary(Book3)
-displayBooks(myLibrary)
+// addBookToLibrary(Book1)
+// addBookToLibrary(Book2)
+// addBookToLibrary(Book3)
+// displayBooks(myLibrary)
