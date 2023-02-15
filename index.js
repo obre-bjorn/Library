@@ -33,18 +33,17 @@ addBookForm.addEventListener('submit', (e) => {
 
     AddBook(book);
     console.log(libraryIndex)
-
     addBookForm.reset();
-    modal.classList.remove('flex');
-    modal.classList.add('hidden')
+
+
+    toggleModal()
 
 })
 
 //  SHOW MODAL
 
 addBookBtn.addEventListener('click', () => {
-    modal.classList.add('flex')
-    modal.classList.remove('hidden');
+    toggleModal()
 })
 
 // MODAL  FUNCTIONALITY
@@ -56,10 +55,17 @@ formContainer.addEventListener('click', (e) => {
 
 modal.addEventListener('click', (e) => {
 
-    modal.classList.remove('flex');
-    modal.classList.add('hidden')
+    toggleModal()
 
 })
+
+
+// MODAL TOGGLER
+function toggleModal() {
+    modal.classList.toggle('flex');
+    modal.classList.toggle('hidden')
+    return
+}
 
 
 
@@ -84,6 +90,9 @@ function AddBook(book, index) {
         // console.log(bookContainer);
 
 }
+
+
+
 // deleteBooksBtn.forEach((btn) => {
 //     btn.addEventListener('click', function(e) {
 //         let bookContainer = document.
